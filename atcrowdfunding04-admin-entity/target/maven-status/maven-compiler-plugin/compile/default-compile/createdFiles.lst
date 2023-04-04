@@ -1,0 +1,5 @@
+cn\edu\ccut\crowd\entity\AdminExample.class
+cn\edu\ccut\crowd\entity\Admin.class
+cn\edu\ccut\crowd\entity\AdminExample$Criterion.class
+cn\edu\ccut\crowd\entity\AdminExample$Criteria.class
+cn\edu\ccut\crowd\entity\AdminExample$GeneratedCriteria.class
