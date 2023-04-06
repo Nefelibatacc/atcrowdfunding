@@ -1,8 +1,11 @@
 package cn.edu.ccut.crowd.test;
 
 import cn.edu.ccut.crowd.entity.Admin;
+import cn.edu.ccut.crowd.entity.Role;
 import cn.edu.ccut.crowd.mapper.AdminMapper;
+import cn.edu.ccut.crowd.mapper.RoleMapper;
 import cn.edu.ccut.crowd.service.api.AdminService;
+import cn.edu.ccut.crowd.service.api.RoleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -28,6 +31,17 @@ public class CrowdTest {
 
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private RoleMapper roleMapper;
+
+
+    @Test
+    public void roleSave(){
+        for (int i = 0; i < 235; i++){
+            roleMapper.insert(new Role(null, "role"+i));
+        }
+    }
 
     @Test
     public void test(){
