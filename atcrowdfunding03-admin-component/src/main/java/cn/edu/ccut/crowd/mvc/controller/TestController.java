@@ -1,8 +1,6 @@
 package cn.edu.ccut.crowd.mvc.controller;
 
 import cn.edu.ccut.crowd.entity.Admin;
-import cn.edu.ccut.crowd.entity.ParamData;
-import cn.edu.ccut.crowd.entity.Student;
 import cn.edu.ccut.crowd.service.api.AdminService;
 import cn.edu.ccut.crowd.util.CrowdUtil;
 import cn.edu.ccut.crowd.util.ResultEntity;
@@ -19,6 +17,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+/**
+* @Description: 测试用Controller 正式代码没有它也可以
+* @Param:
+* @return:
+* @Author: Fengshi
+* @Date: 2023/4/5
+*/
 @Controller
 public class TestController {
 
@@ -91,6 +96,12 @@ public class TestController {
         System.out.println(10/0);
 
         return "target";
+    }
+
+    @ResponseBody
+    @RequestMapping("/test/ajax/async.html")
+    public String testAsync(){
+        return "success";
     }
 
 }
