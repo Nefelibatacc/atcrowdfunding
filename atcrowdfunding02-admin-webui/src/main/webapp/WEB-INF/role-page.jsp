@@ -2,6 +2,21 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <%@include file="/WEB-INF/include-head.jsp" %>
+<script type="text/javascript" src="crowd/my-role.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+
+        // 1、对分页操作准备初始化数据
+        window.pageNum = 1;
+        window.pageSize = 5;
+        window.keyword = "";
+
+        // 2、调用执行分页的函数，显示分页效果
+        generatePage();
+    });
+
+</script>
 <body>
 <%@include file="/WEB-INF/include-nav.jsp" %>
 
@@ -37,7 +52,7 @@
                                 <th width="100">操作</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="rolePageBody">
                             <tr>
                                 <td>1</td>
                                 <td><input type="checkbox"></td>
