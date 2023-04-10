@@ -54,4 +54,16 @@ public class RoleServiceImpl implements RoleService {
     public void saveRole(Role role) {
         roleMapper.insert(role);
     }
+
+    /**
+    * @Description: 根据主键id更新角色信息
+    * @Param: [role]
+    * @return: void
+    * @Author: Fengshi
+    * @Date: 2023/4/10
+    */
+    @Override
+    public void updateRole(Role role) {
+        roleMapper.updateByPrimaryKey(role);
+    }
 }

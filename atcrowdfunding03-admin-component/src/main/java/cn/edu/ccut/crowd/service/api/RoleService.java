@@ -29,4 +29,13 @@ public interface RoleService {
     * @Date: 2023/4/10
     */
     void saveRole(Role role);
+
+    /**
+    * @Description: 角色维护更新用户信息的方法
+    * @Param: [role]
+    * @return: void
+    * @Author: Fengshi
+    * @Date: 2023/4/10
+    */
+    void updateRole(Role role);
 }

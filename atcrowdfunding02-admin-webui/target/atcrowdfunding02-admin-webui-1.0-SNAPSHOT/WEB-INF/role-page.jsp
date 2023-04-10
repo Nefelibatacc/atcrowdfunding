@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <%@include file="/WEB-INF/include-head.jsp" %>
-<link rel="stylesheet" href="css/pagination.css" />
+<link rel="stylesheet" href="css/pagination.css"/>
 <script type="text/javascript" src="jquery/jquery.pagination.js" charset="GBK"></script>
 <script type="text/javascript" src="crowd/my-role.js"></script>
 <script type="text/javascript">
@@ -18,7 +18,7 @@
         generatePage();
 
         // 3.给查询按钮绑定单击响应函数
-        $("#searchBtn").click(function(){
+        $("#searchBtn").click(function () {
 
             // ①获取关键词数据赋值给对应的全局变量
             window.keyword = $("#keywordInput").val();
@@ -34,7 +34,7 @@
             $("#addModal").modal("show");
 
         });
-        
+
         // 5、给新增模态框中的保存按钮绑定单击响应函数
         $("#saveRoleBtn").click(function () {
 
@@ -46,16 +46,16 @@
 
             // ②发生Ajax请求
             $.ajax({
-                "url":"role/save.json",
-                "type":"post",
-                "data":{
-                    "name":roleName
+                "url": "role/save.json",
+                "type": "post",
+                "data": {
+                    "name": roleName
                 },
-                "dataType":"json",
-                "success":function (response) {
+                "dataType": "json",
+                "success": function (response) {
                     var result = response.result;
 
-                    if (result == "SUCCESS"){
+                    if (result == "SUCCESS") {
                         layer.msg("操作成功!");
 
                         // 将页码定位到最后一页
@@ -64,12 +64,12 @@
                         generatePage();
                     }
 
-                    if (result == "FAILED"){
-                        layer.msg("操作失败!"+response.message);
+                    if (result == "FAILED") {
+                        layer.msg("操作失败!" + response.message);
                     }
                 },
-                "error":function (response) {
-                    layer.msg(response.status+" "+response.statusText);
+                "error": function (response) {
+                    layer.msg(response.status + " " + response.statusText);
                 }
             });
 
@@ -80,6 +80,69 @@
             $("#addModal [name=roleName]").val("");
         });
 
+        // 6、给页面上的“铅笔”按钮绑定单机响应函数，目的是打开模态框
+        // 传统的事件绑定方式只能在第一个页面有效，翻页后失效了
+        // $(".pencilBtn").click(function () {
+        //    alert("aaa");
+        // });
+
+        // 使用jQuery的on()函数可以解决上面问题
+        // ①首先找到所有“动态生成”的元素所附着的“静态”元素
+        // ②on()函数的第一个参数是事件类型
+        // ③on()函数的第二个参数是找到真正要绑定事件的元素的选择器
+        // ④on()函数的第三个参数是事件的响应函数
+        $("#rolePageBody").on("click",".pencilBtn",function () {
+            // 打开模态框
+            $("#editModal").modal("show");
+
+            // 获取表格中当前行中的角色名称
+            var roleName = $(this).parent().prev().text();
+
+            // 获取当前角色的id
+            // 依据是：var pencilBtn = "<button id='" + roleId + "'  这段代码中我们把roleId设置到id属性里了
+            // 为了让执行更新的按钮能够获取到roleId的值，把它放在全局变量上
+            window.roleId = this.id;
+
+            // 使用roleName的值去设置模态框中的文本框
+            $("#editModal [name=roleName]").val(roleName);
+        });
+
+        // 7、给更新模态框中的更新按钮绑定单击响应函数
+        $("#updateRoleBtn").click(function () {
+            // ①从文本框中获取新的角色名称
+            var roleName = $("#editModal [name=roleName]").val();
+
+            // ②发生Ajax请求执行更新
+            $.ajax({
+                "url":"role/update.json",
+                "type":"post",
+                "data":{
+                    "id":window.roleId,
+                    "name":roleName
+                },
+                "dataType":"json",
+                "success": function (response) {
+                    var result = response.result;
+
+                    if (result == "SUCCESS") {
+                        layer.msg("操作成功!");
+
+                        // 重新加载分页数据
+                        generatePage();
+                    }
+
+                    if (result == "FAILED") {
+                        layer.msg("操作失败!" + response.message);
+                    }
+                },
+                "error": function (response) {
+                    layer.msg(response.status + " " + response.statusText);
+                }
+            });
+
+            // ③关闭模态框
+            $("#editModal").modal("hide");
+        });
     });
 
 </script>
@@ -99,13 +162,20 @@
                         <div class="form-group has-feedback">
                             <div class="input-group">
                                 <div class="input-group-addon">查询条件</div>
-                                <input id="keywordInput" class="form-control has-success" type="text" placeholder="请输入查询条件">
+                                <input id="keywordInput" class="form-control has-success" type="text"
+                                       placeholder="请输入查询条件">
                             </div>
                         </div>
-                        <button id="searchBtn" type="button" class="btn btn-warning"><i class="glyphicon glyphicon-search"></i> 查询</button>
+                        <button id="searchBtn" type="button" class="btn btn-warning">
+                            <i class="glyphicon glyphicon-search"></i> 查询
+                        </button>
                     </form>
-                    <button type="button" class="btn btn-danger" style="float:right;margin-left:10px;"><i class=" glyphicon glyphicon-remove"></i> 删除</button>
-                    <button type="button" id="showAddModalButton" class="btn btn-primary" style="float:right;" ><i class="glyphicon glyphicon-plus"></i> 新增</button>
+                    <button type="button" class="btn btn-danger" style="float:right;margin-left:10px;">
+                        <i class=" glyphicon glyphicon-remove"></i> 删除
+                    </button>
+                    <button type="button" id="showAddModalButton" class="btn btn-primary" style="float:right;">
+                        <i class="glyphicon glyphicon-plus"></i> 新增
+                    </button>
                     <br>
                     <hr style="clear:both;">
                     <div class="table-responsive">
@@ -124,9 +194,12 @@
                                 <td><input type="checkbox"></td>
                                 <td>PM - 项目经理</td>
                                 <td>
-                                    <button type="button" class="btn btn-success btn-xs"><i class=" glyphicon glyphicon-check"></i></button>
-                                    <button type="button" class="btn btn-primary btn-xs"><i class=" glyphicon glyphicon-pencil"></i></button>
-                                    <button type="button" class="btn btn-danger btn-xs"><i class=" glyphicon glyphicon-remove"></i></button>
+                                    <button type="button" class="btn btn-success btn-xs"><i
+                                            class=" glyphicon glyphicon-check"></i></button>
+                                    <button type="button" class="btn btn-primary btn-xs"><i
+                                            class=" glyphicon glyphicon-pencil"></i></button>
+                                    <button type="button" class="btn btn-danger btn-xs"><i
+                                            class=" glyphicon glyphicon-remove"></i></button>
                                 </td>
                             </tr>
                             </tbody>
@@ -146,6 +219,7 @@
     </div>
 </div>
 
-<%@include file="/WEB-INF/modal-role-add.jsp"%>
+<%@include file="/WEB-INF/modal-role-add.jsp" %>
+<%@include file="/WEB-INF/modal-role-edit.jsp" %>
 </body>
 </html>

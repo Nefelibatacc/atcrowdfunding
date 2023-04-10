@@ -61,4 +61,20 @@ public class RoleController {
         return ResultEntity.successWithoutData();
     }
 
+    /**
+    * @Description: 更新角色的方法
+    * @Param: [role]
+    * @return: cn.edu.ccut.crowd.util.ResultEntity<java.lang.String>
+    * @Author: Fengshi
+    * @Date: 2023/4/10
+    */
+    @ResponseBody
+    @RequestMapping("/role/update.json")
+    public ResultEntity<String> updateRole(Role role){
+
+        roleService.updateRole(role);
+
+        return ResultEntity.successWithoutData();
+    }
+
 }
