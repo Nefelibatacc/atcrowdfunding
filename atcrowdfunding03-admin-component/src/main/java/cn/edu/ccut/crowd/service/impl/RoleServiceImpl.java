@@ -42,4 +42,16 @@ public class RoleServiceImpl implements RoleService {
         // 3、封装为PageInfo对象返回
         return new PageInfo<>(roleList);
     }
+
+    /**
+    * @Description: 新增角色维护用户的service实现 不需要try/catch 因为有框架的异常映射实现
+    * @Param: [role]
+    * @return: void
+    * @Author: Fengshi
+    * @Date: 2023/4/10
+    */
+    @Override
+    public void saveRole(Role role) {
+        roleMapper.insert(role);
+    }
 }

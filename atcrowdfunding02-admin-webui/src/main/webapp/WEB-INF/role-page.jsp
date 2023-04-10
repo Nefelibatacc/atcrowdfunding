@@ -34,6 +34,51 @@
             $("#addModal").modal("show");
 
         });
+        
+        // 5、给新增模态框中的保存按钮绑定单击响应函数
+        $("#saveRoleBtn").click(function () {
+
+            // ①获取用户在文本框中输入的角色名称
+            // #addModal表示找到整个模态框
+            // 空格表示在后代元素中继续查找
+            // [name=roleName]表示匹配name属性等于roleName的元素
+            var roleName = $.trim($("#addModal [name=roleName]").val());
+
+            // ②发生Ajax请求
+            $.ajax({
+                "url":"role/save.json",
+                "type":"post",
+                "data":{
+                    "name":roleName
+                },
+                "dataType":"json",
+                "success":function (response) {
+                    var result = response.result;
+
+                    if (result == "SUCCESS"){
+                        layer.msg("操作成功!");
+
+                        // 将页码定位到最后一页
+                        window.pageNum = 99999999;
+                        // 重新加载分页数据
+                        generatePage();
+                    }
+
+                    if (result == "FAILED"){
+                        layer.msg("操作失败!"+response.message);
+                    }
+                },
+                "error":function (response) {
+                    layer.msg(response.status+" "+response.statusText);
+                }
+            });
+
+            // 关闭模态框
+            $("#addModal").modal("hide");
+
+            // 清理模态框
+            $("#addModal [name=roleName]").val("");
+        });
 
     });
 
