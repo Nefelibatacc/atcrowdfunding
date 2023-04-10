@@ -1,6 +1,7 @@
 package cn.edu.ccut.crowd.service.impl;
 
 import cn.edu.ccut.crowd.entity.Role;
+import cn.edu.ccut.crowd.entity.RoleExample;
 import cn.edu.ccut.crowd.mapper.RoleMapper;
 import cn.edu.ccut.crowd.service.api.RoleService;
 import com.github.pagehelper.PageHelper;
@@ -65,5 +66,25 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void updateRole(Role role) {
         roleMapper.updateByPrimaryKey(role);
+    }
+
+    /**
+    * @Description: 根据传入的主键id数组实现删除/批量删除
+    * @Param: [roleIdList]
+    * @return: void
+    * @Author: Fengshi
+    * @Date: 2023/4/10
+    */
+    @Override
+    public void removeRole(List<Integer> roleIdList) {
+
+        RoleExample example = new RoleExample();
+
+        RoleExample.Criteria criteria = example.createCriteria();
+
+        // delete from t_role where id in (5,8,12)
+        criteria.andIdIn(roleIdList);
+
+        roleMapper.deleteByExample(example);
     }
 }
