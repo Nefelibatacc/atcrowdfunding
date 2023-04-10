@@ -45,6 +45,13 @@ public class RoleController {
         return ResultEntity.successWithData(pageInfo);
     }
 
+    /**
+    * @Description: 角色控制新增用户的controller方法
+    * @Param: [role]
+    * @return: cn.edu.ccut.crowd.util.ResultEntity<java.lang.String>
+    * @Author: Fengshi
+    * @Date: 2023/4/10
+    */
     @ResponseBody
     @RequestMapping("/role/save.json")
     public ResultEntity<String> saveRole(Role role){
