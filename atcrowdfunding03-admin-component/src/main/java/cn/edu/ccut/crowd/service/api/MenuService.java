@@ -22,4 +22,12 @@ public interface MenuService {
     */
     List<Menu> getAll();
 
+    /**
+    * @Description: 保存新添加的子节点信息
+    * @Param: [menu]
+    * @return: void
+    * @Author: Fengshi
+    * @Date: 2023/4/12
+    */
+    void saveMenu(Menu menu);
 }

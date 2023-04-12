@@ -23,7 +23,7 @@ public class MenuServiceImpl implements MenuService {
     private MenuMapper menuMapper;
 
     /**
-    * @Description: 
+    * @Description: 见接口
     * @Param: []
     * @return: java.util.List<cn.edu.ccut.crowd.entity.Menu>
     * @Author: Fengshi
@@ -32,5 +32,17 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public List<Menu> getAll() {
         return menuMapper.selectByExample(new MenuExample());
+    }
+
+    /**
+    * @Description: 见接口
+    * @Param: [menu]
+    * @return: void
+    * @Author: Fengshi
+    * @Date: 2023/4/12
+    */
+    @Override
+    public void saveMenu(Menu menu) {
+        menuMapper.insert(menu);
     }
 }

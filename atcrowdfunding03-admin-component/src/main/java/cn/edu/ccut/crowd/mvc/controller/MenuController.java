@@ -27,6 +27,22 @@ public class MenuController {
     private MenuService menuService;
 
     /**
+    * @Description: 添加新的子节点
+    * @Param: [menu]
+    * @return: cn.edu.ccut.crowd.util.ResultEntity<java.lang.String>
+    * @Author: Fengshi
+    * @Date: 2023/4/12
+    */
+    @ResponseBody
+    @RequestMapping("/menu/save.json")
+    public ResultEntity<String> saveMenu(Menu menu){
+
+        menuService.saveMenu(menu);
+
+        return ResultEntity.successWithoutData();
+    }
+
+    /**
     * @Description: 获取所有节点，并将父节点与子节点组装起来(菜单维护页面显示树形结构)
     * @Param: []
     * @return: cn.edu.ccut.crowd.util.ResultEntity<cn.edu.ccut.crowd.entity.Menu>
