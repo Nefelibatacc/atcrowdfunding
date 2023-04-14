@@ -49,4 +49,22 @@ public interface RoleService {
     * @Date: 2023/4/10
     */
     void removeRole(List<Integer> roleIdList);
+
+    /**
+    * @Description: 权限分配-获取已分配角色
+    * @Param: [adminId]
+    * @return: java.util.List<cn.edu.ccut.crowd.entity.Role>
+    * @Author: Fengshi
+    * @Date: 2023/4/14
+    */
+    List<Role> getAssignedRole(Integer adminId);
+
+    /**
+    * @Description: 权限分配-获取未分配角色
+    * @Param: [adminId]
+    * @return: java.util.List<cn.edu.ccut.crowd.entity.Role>
+    * @Author: Fengshi
+    * @Date: 2023/4/14
+    */
+    List<Role> getUnAssignedRole(Integer adminId);
 }

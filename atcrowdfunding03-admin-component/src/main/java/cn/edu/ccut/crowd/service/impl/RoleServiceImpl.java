@@ -87,4 +87,29 @@ public class RoleServiceImpl implements RoleService {
 
         roleMapper.deleteByExample(example);
     }
+
+    /**
+    * @Description: 查询已分配角色
+    * @Param: [adminId]
+    * @return: java.util.List<cn.edu.ccut.crowd.entity.Role>
+    * @Author: Fengshi
+    * @Date: 2023/4/14
+    */
+    @Override
+    public List<Role> getAssignedRole(Integer adminId) {
+
+        return roleMapper.selectAssignedRole(adminId);
+    }
+
+    /**
+    * @Description: // 查询未分配角色
+    * @Param: [adminId]
+    * @return: java.util.List<cn.edu.ccut.crowd.entity.Role>
+    * @Author: Fengshi
+    * @Date: 2023/4/14
+    */
+    @Override
+    public List<Role> getUnAssignedRole(Integer adminId) {
+        return roleMapper.selectUnAssignedRole(adminId);
+    }
 }
