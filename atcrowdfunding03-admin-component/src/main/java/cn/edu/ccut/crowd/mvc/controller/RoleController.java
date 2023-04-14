@@ -5,11 +5,8 @@ import cn.edu.ccut.crowd.service.api.RoleService;
 import cn.edu.ccut.crowd.util.ResultEntity;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+// import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,7 +17,8 @@ import java.util.List;
  * @Date: 2023/04/06/12:59
  * @Description: 角色维护的controller
  */
-@Controller
+// @Controller
+@RestController
 public class RoleController {
 
     @Autowired
@@ -33,7 +31,7 @@ public class RoleController {
     * @Author: Fengshi
     * @Date: 2023/4/6
     */
-    @ResponseBody
+    // @ResponseBody
     @RequestMapping("/role/get/page/info.json")
     public ResultEntity<PageInfo<Role>> getPageInfo(
             @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
@@ -55,7 +53,7 @@ public class RoleController {
     * @Author: Fengshi
     * @Date: 2023/4/10
     */
-    @ResponseBody
+    // @ResponseBody
     @RequestMapping("/role/save.json")
     public ResultEntity<String> saveRole(Role role){
 
@@ -71,7 +69,7 @@ public class RoleController {
     * @Author: Fengshi
     * @Date: 2023/4/10
     */
-    @ResponseBody
+    // @ResponseBody
     @RequestMapping("/role/update.json")
     public ResultEntity<String> updateRole(Role role){
 
@@ -87,7 +85,7 @@ public class RoleController {
     * @Author: Fengshi
     * @Date: 2023/4/10
     */
-    @ResponseBody
+    // @ResponseBody
     @RequestMapping("/role/remove/by/role/id/array.json")
     public ResultEntity<String> removeByRoleIdArray(@RequestBody List<Integer> roleIdList){ // 注意：使用@RequestBody来接收roleIdList
 

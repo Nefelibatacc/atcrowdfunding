@@ -4,10 +4,11 @@ import cn.edu.ccut.crowd.entity.Menu;
 import cn.edu.ccut.crowd.service.api.MenuService;
 import cn.edu.ccut.crowd.util.ResultEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+//import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+//import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +22,9 @@ import java.util.Objects;
  * @Date: 2023/04/12/14:30
  * @Description:
  */
-@Controller
+// @Controller
+// @ResponseBody
+@RestController
 public class MenuController {
 
     @Autowired
@@ -34,7 +37,7 @@ public class MenuController {
     * @Author: Fengshi
     * @Date: 2023/4/14
     */
-    @ResponseBody
+    //@ResponseBody
     @RequestMapping("/menu/remove.json")
     public ResultEntity<String> removeMenu(@RequestParam("id") Integer id){
 
@@ -50,7 +53,7 @@ public class MenuController {
     * @Author: Fengshi
     * @Date: 2023/4/14
     */
-    @ResponseBody
+    //@ResponseBody
     @RequestMapping("/menu/update.json")
     public ResultEntity<String> updateMenu(Menu menu){
 
@@ -66,7 +69,7 @@ public class MenuController {
     * @Author: Fengshi
     * @Date: 2023/4/12
     */
-    @ResponseBody
+    //@ResponseBody
     @RequestMapping("/menu/save.json")
     public ResultEntity<String> saveMenu(Menu menu){
 
@@ -82,7 +85,7 @@ public class MenuController {
     * @Author: Fengshi
     * @Date: 2023/4/12
     */
-    @ResponseBody
+    //@ResponseBody
     @RequestMapping("/menu/get/whole/tree.json")
     public ResultEntity<Menu> getWholeTreeNew(){
 
