@@ -30,4 +30,13 @@ public interface MenuService {
     * @Date: 2023/4/12
     */
     void saveMenu(Menu menu);
+
+    /**
+    * @Description: 菜单维护-更新节点
+    * @Param: [menu]
+    * @return: void
+    * @Author: Fengshi
+    * @Date: 2023/4/14
+    */
+    void updateMenu(Menu menu);
 }

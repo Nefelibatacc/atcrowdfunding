@@ -27,6 +27,22 @@ public class MenuController {
     private MenuService menuService;
 
     /**
+    * @Description: 更新节点
+    * @Param: [menu]
+    * @return: cn.edu.ccut.crowd.util.ResultEntity<java.lang.String>
+    * @Author: Fengshi
+    * @Date: 2023/4/14
+    */
+    @ResponseBody
+    @RequestMapping("/menu/update.json")
+    public ResultEntity<String> updateMenu(Menu menu){
+
+        menuService.updateMenu(menu);
+
+        return ResultEntity.successWithoutData();
+    }
+
+    /**
     * @Description: 添加新的子节点
     * @Param: [menu]
     * @return: cn.edu.ccut.crowd.util.ResultEntity<java.lang.String>
