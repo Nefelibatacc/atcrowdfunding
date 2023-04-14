@@ -39,4 +39,13 @@ public interface MenuService {
     * @Date: 2023/4/14
     */
     void updateMenu(Menu menu);
+
+    /**
+    * @Description: 菜单维护-根据id删除节点
+    * @Param: [id]
+    * @return: void
+    * @Author: Fengshi
+    * @Date: 2023/4/14
+    */
+    void removeMenu(Integer id);
 }

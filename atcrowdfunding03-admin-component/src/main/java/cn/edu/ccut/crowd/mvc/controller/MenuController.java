@@ -6,6 +6,7 @@ import cn.edu.ccut.crowd.util.ResultEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
@@ -25,6 +26,22 @@ public class MenuController {
 
     @Autowired
     private MenuService menuService;
+
+    /**
+    * @Description: 删除节点
+    * @Param: [menu]
+    * @return: cn.edu.ccut.crowd.util.ResultEntity<java.lang.String>
+    * @Author: Fengshi
+    * @Date: 2023/4/14
+    */
+    @ResponseBody
+    @RequestMapping("/menu/remove.json")
+    public ResultEntity<String> removeMenu(@RequestParam("id") Integer id){
+
+        menuService.removeMenu(id);
+
+        return ResultEntity.successWithoutData();
+    }
 
     /**
     * @Description: 更新节点
