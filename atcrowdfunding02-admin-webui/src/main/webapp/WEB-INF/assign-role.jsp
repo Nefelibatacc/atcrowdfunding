@@ -29,6 +29,11 @@
 
         });
 
+        $("#submitBtn").click(function () {
+            // 在提交表单前把“已分配”部分的option全部选中
+            $("select:eq(1)>option").prop("selected","selected");
+        });
+
     });
 </script>
 <body>
@@ -73,7 +78,7 @@
                                 </c:forEach>
                             </select>
                         </div>
-                        <button type="submit" style="width: 150px" class="btn btn-lg btn-success btn-block">保存</button>
+                        <button id="submitBtn" type="submit" style="width: 150px" class="btn btn-lg btn-success btn-block">保存</button>
                     </form>
                 </div>
             </div>
