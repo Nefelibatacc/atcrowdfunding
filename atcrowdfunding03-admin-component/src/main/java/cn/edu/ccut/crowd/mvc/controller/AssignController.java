@@ -57,4 +57,19 @@ public class AssignController {
         return "assign-role";
     }
 
+    @RequestMapping("/assign/do/role/assign.html")
+    public String saveAdminRoleRelationship(
+            @RequestParam("adminId") Integer adminId,
+            @RequestParam("pageNum") Integer pageNum,
+            @RequestParam("keyword") String keyword,
+            // 我们允许用户在页面上取消所有已分配角色再提交表单，所以可以不提供roleIdList请求参数
+            // 设置required = false表示这个请求参数不是必须的
+            @RequestParam(value = "roleIdList", required = false) List<Integer> roleIdList
+    ){
+
+        adminService.saveAdminRoleRelationship(adminId, roleIdList);
+
+        return "redirect:/admin/get/page.html?pageNum=" +pageNum+ "&keyword=" +keyword;
+    }
+
 }

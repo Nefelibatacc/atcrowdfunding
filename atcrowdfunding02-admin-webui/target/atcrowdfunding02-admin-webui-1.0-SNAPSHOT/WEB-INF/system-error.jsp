@@ -53,8 +53,7 @@
         requestScope.exception.message相当于exception.getMessage()
     --%>
     <h3 style="text-align: center">${requestScope.exception.message}</h3>
-    <button style="width: 150px; margin: 50px auto 0px auto" class="btn btn-lg btn-success btn-block">点我返回上一步
-    </button>
+    <button style="width: 150px; margin: 50px auto 0px auto" class="btn btn-lg btn-success btn-block">点我返回上一步</button>
 </div>
 </body>
 </html>

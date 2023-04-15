@@ -69,4 +69,13 @@ public interface AdminService {
     * @Date: 2023/4/4
     */
     void update(Admin admin);
+
+    /**
+    * @Description: 执行分配-保存选择好的分配信息
+    * @Param: [adminId, roleIdList]
+    * @return: void
+    * @Author: Fengshi
+    * @Date: 2023/4/15
+    */
+    void saveAdminRoleRelationship(Integer adminId, List<Integer> roleIdList);
 }
