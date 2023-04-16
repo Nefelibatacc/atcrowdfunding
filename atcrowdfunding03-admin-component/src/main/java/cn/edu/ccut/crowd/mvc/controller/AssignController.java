@@ -2,6 +2,7 @@ package cn.edu.ccut.crowd.mvc.controller;
 
 import cn.edu.ccut.crowd.entity.Role;
 import cn.edu.ccut.crowd.service.api.AdminService;
+import cn.edu.ccut.crowd.service.api.AuthService;
 import cn.edu.ccut.crowd.service.api.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,9 @@ public class AssignController {
 
     @Autowired
     private RoleService roleService;
+
+    @Autowired
+    private AuthService authService;
 
     /**
     * @Description: 权限分配-权限页面查询
