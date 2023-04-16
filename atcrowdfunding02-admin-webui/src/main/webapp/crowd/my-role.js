@@ -54,6 +54,7 @@ function fillAuthTree() {
         "dataType": "json",
         "async": false
     });
+
     if (ajaxReturn.status != 200) {
         layer.msg("请求处理出错!响应状态码是：" + ajaxReturn.status + "说明是：" + ajaxReturn.statusText);
         return;
@@ -64,9 +65,12 @@ function fillAuthTree() {
     // 6.根据 authIdArray 把树形结构中对应的节点勾选上
     // ①遍历 authIdArray
     for (var i = 0; i < authIdArray.length; i++) {
+
         var authId = authIdArray[i];
+
         // ②根据 id 查询树形结构中对应的节点
         var treeNode = zTreeObj.getNodeByParam("id", authId);
+        
         // ③将 treeNode 设置为被勾选
         // checked 设置为 true 表示节点勾选
         var checked = true;
