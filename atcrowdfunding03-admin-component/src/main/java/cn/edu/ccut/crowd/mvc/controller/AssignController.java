@@ -9,11 +9,13 @@ import cn.edu.ccut.crowd.util.ResultEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -117,6 +119,23 @@ public class AssignController {
         List<Integer> authIdList = authService.getAssignedAuthIdByRoleId(roleId);
 
         return ResultEntity.successWithData(authIdList);
+    }
+
+    /**
+    * @Description: 保存角色到权限的关联关系
+    * @Param: [map]
+    * @return: cn.edu.ccut.crowd.util.ResultEntity<java.lang.String>
+    * @Author: Fengshi
+    * @Date: 2023/4/16
+    */
+    @ResponseBody
+    @RequestMapping("/assign/do/role/assign/auth.json")
+    public ResultEntity<String> saveRoleAuthRelationship(
+            @RequestBody Map<String, List<Integer>> map) {
+
+        authService.saveRoleAuthRelationship(map);
+
+        return ResultEntity.successWithoutData();
     }
 
 }

@@ -3,6 +3,7 @@ package cn.edu.ccut.crowd.service.api;
 import cn.edu.ccut.crowd.entity.Auth;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,4 +31,13 @@ public interface AuthService {
     * @Date: 2023/4/16
     */
     List<Integer> getAssignedAuthIdByRoleId(Integer roleId);
+
+    /**
+    * @Description: 保存角色到权限的关联关系
+    * @Param: [map]
+    * @return: void
+    * @Author: Fengshi
+    * @Date: 2023/4/16
+    */
+    void saveRoleAuthRelationship(Map<String, List<Integer>> map);
 }
