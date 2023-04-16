@@ -47,9 +47,9 @@ public class AuthServiceImpl implements AuthService {
         List<Integer> authIdList = map.get("authIdArray");
 
         // 4、判断authIdArray是否有效
-        if(authIdList != null || authIdList.size() > 0) {
+        if(authIdList != null && authIdList.size() > 0) {
             authMapper.insertNewRelationship(roleId, authIdList);
         }
-
     }
+
 }

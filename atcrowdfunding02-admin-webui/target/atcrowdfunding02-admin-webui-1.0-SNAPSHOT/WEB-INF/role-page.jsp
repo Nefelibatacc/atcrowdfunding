@@ -302,10 +302,36 @@
                 authIdArray.push(authId);
             }
 
-            alert(authIdArray);
-
             // ②发送请求执行分配
+            var requestBody = {
+                "authIdArray":authIdArray,
+                // 为了服务器端controller能够统一使用List<Integer>方式接收数据，roleId也存入数组
+                "roleId":[window.roleId]
+            };
 
+            requestBody = JSON.stringify(requestBody);
+
+            $.ajax({
+                "url":"assign/do/role/assign/auth.json",
+                "type":"post",
+                "data":requestBody,
+                "contentType":"application/json;charset=UTF-8",
+                "dataType":"json",
+                "success":function (response) {
+                    var result = response.result;
+                    if (result == "SUCCESS") {
+                        layer.msg("操作成功！");
+                    }
+                    if (result == "FAILED") {
+                        layer.msg("操作失败！" +response.message);
+                    }
+                },
+                "error":function (response) {
+                    layer.msg(response.status+" "+response.statusText);
+                }
+            });
+
+            $("#assignModal").modal("hide");
         });
 
     });

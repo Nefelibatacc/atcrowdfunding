@@ -302,8 +302,6 @@
                 authIdArray.push(authId);
             }
 
-            alert(authIdArray);
-
             // ②发送请求执行分配
             var requestBody = {
                 "authIdArray":authIdArray,
